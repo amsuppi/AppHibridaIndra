@@ -1,11 +1,22 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import InputText from './../components/Input'
+import { Input, Button } from 'react-native-elements';
 
 const Login = ()=>{
+
     return(
-        <View >
-           <InputText/>
+        <View
+            style={styles.container}
+        >
+           <Input
+            placeholder='Usuario'
+            />
+           <Input
+            placeholder='Contraseña'
+            />
+            <Button 
+            title="Ingresar"/>
+           
         </View>
     )
 
@@ -13,7 +24,14 @@ const Login = ()=>{
 
 
 const styles = StyleSheet.create({
-  
+    container:{
+        marginRight: 20,
+        marginLeft:20
+
+    },
+    input:{
+        margin: 25
+    }
 })
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 const InputText = ()=>{
     return(
