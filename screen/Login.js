@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { Input, Button } from 'react-native-elements';
 
-const Login = ()=>{
+const Login = ({navigation})=>{
 
     return(
         <View
@@ -15,18 +15,19 @@ const Login = ()=>{
             placeholder='Contraseña'
             />
             <Button 
-            title="Ingresar"/>
+            title="Ingresar"
+            />
            
         </View>
     )
-
 }
-
 
 const styles = StyleSheet.create({
     container:{
-        marginRight: 20,
-        marginLeft:20
+        flex:1, 
+        justifyContent: "center",
+        padding: 25,
+        
 
     },
     input:{

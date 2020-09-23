@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View } from 'react-native';
+import { Text } from 'react-native-elements';
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          onPress={() => navigation.navigate('Perfil')}
-          title="Go to notifications"
-        />
+        <Text h3>
+          React Native Indra
+        </Text>
       </View>
     );
   }
