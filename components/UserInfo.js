@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 
-
 const UserInfo = ({title, info}) =>{
     return(
     <View>
@@ -10,9 +9,5 @@ const UserInfo = ({title, info}) =>{
     </View>
     )
 }
-
-
-
-
 
 export default UserInfo;
