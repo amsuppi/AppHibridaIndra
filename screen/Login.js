@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { firebaseApp } from '../firebase/firebase';
