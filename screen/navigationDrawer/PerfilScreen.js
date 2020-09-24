@@ -1,18 +1,11 @@
-import React, {useEffect} from 'react';
-import { Button, View, Text } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { Button, View, Text, StyleSheet, Image } from 'react-native';
 import * as firebase from 'firebase';
 
 import UserInfo from './../../components/UserInfo';
 
 function PerfilScreen() {
-/*  const userData = ()=> {
-    var holis = "chau"
-
-    firebase.database().ref().child(userId).child('nombre').once("value", 
-    function(data){
-      holis = data
-    } )
-  }*/
+  const [userInfo, setuserInfo]= useState('');
 
   useEffect(() => {
     
@@ -20,23 +13,28 @@ function PerfilScreen() {
 
     firebase.database().ref('/usuariosData/' + userId).once('value')
     .then(function(snapshot) {
-      var username = (snapshot.val() ) || 'Anonymous';
-      console.log(username)
+      var username = (snapshot.val());
+      setuserInfo(username)
     });
   }, [])
 
     return (
-      <View>
-        <UserInfo title='Nombre' info='Amalia Maribel'/>
-        <UserInfo title='Apellido' info='Suppi'/>
-        <UserInfo title='Mail' info='maribelsuppi@gmail.com'/>  
-        <Text>
-          Hello
-        </Text>
-
+      <View style={styles.container}>
+        <UserInfo title='Nombre' info={userInfo.nombre}/>
+        <UserInfo title='Apellido' info={userInfo.apellido}/>
+        <UserInfo title='Mail' info={userInfo.email}/>  
       </View>
     );
   }
+
+
+const styles = StyleSheet.create({
+    container:{
+      flex:1,
+      alignSelf: "center",
+      textAlign: "center"
+    }
+})
   
 
 export default PerfilScreen;

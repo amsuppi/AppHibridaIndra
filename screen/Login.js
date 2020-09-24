@@ -47,6 +47,11 @@ const Login = ({navigation})=>{
             title="Ingresar"
             onPress={onSubmit}
             />
+            <Button 
+            title='Registrarse' 
+            onPress={() => navigation.navigate('Register')}
+            type="clear"
+            />
            
         </View>
     )

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DrawerActions } from '@react-navigation/native';
-import { Button} from 'react-native';
+import { Button, Icon } from 'react-native-elements'
 import { createStackNavigator } from '@react-navigation/stack';
 import PerfilScreen from './PerfilScreen';
 
@@ -14,9 +14,17 @@ function PerfilStack({navigation}) {
           title: "Perfil",
           headerLeft: () => (
             <Button
-              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-              title="Info"
-              color="red"
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+            type="clear"
+              icon={
+                <Icon
+                   name='three-bars'
+                   type='octicon'
+                   size={30}
+                   color="black"
+                   
+                />
+               }
             />
           ),
         }}
