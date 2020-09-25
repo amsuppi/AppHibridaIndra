@@ -62,9 +62,11 @@ useEffect(() => {
         <Input placeholder="Email"
         onChange={(e)=> onChange(e, "email")}/>
         <Input placeholder="Contraseña"
+        password= {true}
+        secureTextEntry={true}
         onChange={(e)=> onChange(e, "contrasena")}/>
 
-        <Button title="Aceptar"
+        <Button title="Registrarse"
         onPress={onSubmit}/>
         <Toast ref={toastRef} position="bottom" opacity={0.8}/>
       </View>

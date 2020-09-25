@@ -20,8 +20,9 @@ function PerfilStack({navigation}) {
                 <Icon
                    name='three-bars'
                    type='octicon'
-                   size={30}
-                   color="black"
+                   size={25}
+                   color="white"
+                   containerStyle={{marginLeft:5}}
                    
                 />
                }

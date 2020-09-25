@@ -1,6 +1,7 @@
 import React,{useState, useRef, useEffect} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { Input, Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { LogBox } from 'react-native';
 import { firebaseApp } from '../firebase/firebase';
 import * as firebase from 'firebase';
@@ -48,6 +49,7 @@ const Login = ({navigation})=>{
            <Input
             placeholder='Usuario'
             onChange={(e)=> onChange(e, "email")}
+            
             />
            <Input
             placeholder='Contraseña'
