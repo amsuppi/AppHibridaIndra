@@ -29,6 +29,13 @@ function HomeStack({navigation}) {
                }
             />
           ),
+          headerStyle: {
+            backgroundColor: '#039be5',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
         }}
         />
          

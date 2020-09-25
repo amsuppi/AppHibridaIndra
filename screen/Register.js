@@ -1,17 +1,24 @@
-import React,{useState} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React,{useState, useRef, useEffect} from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { firebaseApp } from '../firebase/firebase';
 import * as firebase from 'firebase';
+import { LogBox } from 'react-native';
+import Toast from 'react-native-easy-toast'
 
 function Register({navigation}) {
   const [formData, setFormData] = useState(defaultFormValue());
+  const toastRef = useRef();
 
   const onChange = (e, type) => {
     setFormData({
         ...formData, [type]: e.nativeEvent.text
     })
 }
+
+useEffect(() => {
+  LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+}, [])
 
   const onSubmit = ()=> {
     if(formData.nombre.length <= 0 
@@ -20,11 +27,11 @@ function Register({navigation}) {
       || formData.email.length <= 0 
       || formData.contrasena.length <= 0 ){
 
-        console.log("Todos los campos son obligatorios");
+        toastRef.current.show("Todos los campos son obligatorios");
 
     }else if(formData.password < 4) {
 
-        console.log("La contraseña debe tener al menos 4 digitos");
+        toastRef.current.show("La contraseña debe tener al menos 4 digitos");
     }else{
         firebase.auth()
         .createUserWithEmailAndPassword(formData.email, formData.contrasena)
@@ -35,13 +42,17 @@ function Register({navigation}) {
           firebase.database().ref('/usuariosData/' + userId).set(formData);
           navigation.navigate('Login')
         })
-        .catch(err => {
-          console.log(err)
+        .catch(()=> {
+          toastRef.current.show("Error, vuelva a intentarlo")
         })
     }
 }
     return (
       <View style={styles.contenedor}>
+        <Image
+            style={styles.imageLogo}
+                source={require('../assets/reactNative.png')}
+            />
         <Input placeholder="Nombre"
         onChange={(e)=> onChange(e, "nombre")}/>
         <Input placeholder="Apellido"
@@ -55,6 +66,7 @@ function Register({navigation}) {
 
         <Button title="Aceptar"
         onPress={onSubmit}/>
+        <Toast ref={toastRef} position="bottom" opacity={0.8}/>
       </View>
     );
   }
@@ -77,7 +89,13 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       marginLeft: 25,
       marginRight: 25 
-    }
+    },
+    imageLogo:{
+      height:150, 
+      width:150,
+      alignSelf: "center",
+      marginBottom: 25
+  }
       
 
 })

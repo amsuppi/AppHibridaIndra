@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, StyleSheet, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeStack from './HomeStack';
 import PerfilStack from './PerfilStack';
+import { Header } from 'react-native/Libraries/NewAppScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -17,3 +18,4 @@ export default function DrawerScreen() {
 
   );
 }
+
